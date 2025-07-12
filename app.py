@@ -7,8 +7,8 @@ import re
 
 app = Flask(__name__)
 
-api_key = os.environ.get("OPENAI_API_KEY")
-client = OpenAI(api_key=api_key)
+#api_key = os.environ.get("OPENAI_API_KEY")
+client = OpenAI()
 
 @app.route("/", methods=["GET", "POST"])
 def index():
