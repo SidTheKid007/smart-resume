@@ -79,6 +79,7 @@ def index():
         </body>
         </html>
         """
+        os.makedirs("generated_resumes", exist_ok=True)
         pdf_path = f"generated_resumes/resume_{timestamp}.pdf"
         pdfkit.from_string(html_content, pdf_path, options={'encoding': "UTF-8"})
 
