@@ -1,0 +1,212 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    color: #333;
+}
+
+header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    text-align: center; 
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.site-description {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+    border: 2px solid #4a90e2; 
+}
+
+
+.input-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.input-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box .banner {
+    background-color: #4a90e2;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+
+.form-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.textbox-container {
+    position: relative;
+    flex: 1;
+    min-width: 400px; 
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-header {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #4a90e2;
+    color: white;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.textbox-container textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 300px;
+    padding: 12px;
+    border: 2px solid #4a90e2;
+    border-top: none;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    resize: vertical;
+    font-size: 14px;
+}
+
+.char-count {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.textarea-group {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+textarea {
+    height: 300px;
+    resize: vertical;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    font-family: monospace;
+}
+
+.char-counter {
+    text-align: right;
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.generate-btn {
+    display: block;
+    margin: 20px auto; 
+    background-color: #50e3c2;
+    color: #333;
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.generate-btn:hover {
+    background-color: #3ac9a5;
+    transform: scale(1.02);
+}
+
+.spinner {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #4a90e2;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.output-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.preview-box {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: #4a90e2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.download-btn:hover {
+    background: #357ab8;
+}
+
+footer {
+    background: #f1f1f1;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #777;
+}

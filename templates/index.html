@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L33T7XKLVJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-L33T7XKLVJ');
+    </script>
+    <meta charset="UTF-8">
+    <title>Smart Resume</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Lightbulb" class="logo">
+        <h1>Smart Resume</h1>
+    </header>
+
+    <main>
+        <div class="site-description">
+            <p>
+                SmartResume uses AI to tailor your existing resume to a job's description, and create a new and personalized Smart Resume. Enjoy!
+            </p>
+        </div>
+
+        <form method="POST" onsubmit="return checkResumeLimit();">
+            <div class="input-section">
+                <div class="textbox-container">
+                    <div class="box-header">Your Resume</div>
+                    <textarea id="user_resume" name="user_resume" maxlength="4000" required oninput="updateCharCount('user_resume')">{{ request.form.get('user_resume', '') }}</textarea>
+                    <div class="char-count" id="user_resume_count">0 / 4000</div>
+                </div>
+
+                <div class="textbox-container">
+                    <div class="box-header">Job Description</div>
+                    <textarea id="job_desc" name="job_desc" maxlength="4000" required oninput="updateCharCount('job_desc')"></textarea>
+                    <div class="char-count" id="job_desc_count">0 / 4000</div>
+                </div>
+            </div>
+            <button type="submit" class="generate-btn">Generate Resume</button>
+        </form>
+
+        <div class="spinner" id="loadingSpinner" style="display:none;">
+            <div class="loader"></div>
+            <p>Generating your resume...</p>
+        </div>
+
+        {% if pdf_file %}
+        <div class="output-section">
+            <h2>Your Custom Resume is Ready!</h2>
+            <div class="preview-box">
+                <pre>{{ preview_text }}</pre>
+            </div>
+            <a href="{{ url_for('download_file', filename=pdf_file) }}" class="download-btn">Download PDF</a>
+        </div>
+        {% endif %}
+    </main>
+
+    <footer>
+        Made By Sid K
+    </footer>
+
+    <script>
+    function updateCharCount(id) {
+        const textarea = document.getElementById(id);
+        const countDisplay = document.getElementById(`${id}_count`);
+        countDisplay.textContent = `${textarea.value.length} / 4000`;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        updateCharCount('user_resume');
+        updateCharCount('job_desc');
+    });
+
+    function checkResumeLimit() {
+        let count = localStorage.getItem('resumeCount') || 0;
+        count = parseInt(count);
+
+        if (count == 5) {
+            alert("You have reached 5 resume generations. You can generate 5 more."); 
+        }
+        else if (count == 8) {
+            alert("You have reached 8 resume generations. You can generate 2 more.");
+        }
+        else if (count == 9) {
+            alert("You have reached 9 resume generations. You can generate 1 more."); 
+        }
+        else if (count >= 10) {
+            alert("You have reached the free trial limit of 10 resume generations.");
+            return false; 
+        }
+
+        localStorage.setItem('resumeCount', count + 1);
+        showLoading();
+        return true;
+    }
+
+    function showLoading() {
+        document.getElementById("loadingSpinner").style.display = "block";
+    }
+    </script>
+</body>
+</html>
+
